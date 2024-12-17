@@ -30,3 +30,23 @@ const fadeInObserver = new IntersectionObserver((entries) => {
 sections.forEach((section) => {
   fadeInObserver.observe(section);
 });
+
+const sections = document.querySelectorAll('.section');
+const projectCards = document.querySelectorAll('.project-card');
+
+window.addEventListener('scroll', () => {
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+    if (sectionTop < windowHeight - 100) {
+      section.classList.add('active');
+    }
+  });
+
+  projectCards.forEach(card => {
+    const cardTop = card.getBoundingClientRect().top;
+    if (cardTop < window.innerHeight - 100) {
+      card.classList.add('show');
+    }
+  });
+});
